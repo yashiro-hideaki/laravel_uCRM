@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InertiaTestController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\InertiaTestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//auth,verifiedは認証されたら表示するという意味
+Route::resource('items', ItemController::class)->middleware(['auth', 'verified']);
 Route::get('/inertia/index',[InertiaTestController::class,'index'])->name('inertia.index');
 Route::get('/inertia/create',[InertiaTestController::class,'create'])->name('inertia.create');
 Route::delete('/inertia/{id}',[InertiaTestController::class,'delete'])->name('inertia.delete');
