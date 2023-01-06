@@ -13,7 +13,7 @@ const search = ref('')
 // ref の値を取得するには .valueが必要
 const searchCustomers = () => {
  Inertia.get(route('customers.index', { search: search.value }))
-} 
+}
 
 </script>
 

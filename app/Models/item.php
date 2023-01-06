@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Purchase;
 
 class item extends Model
 {
@@ -15,4 +16,8 @@ class item extends Model
         'price',
         'is_selling'
     ];
+    public function purchases(){
+        return $this->belongsToMany(Purchase::class)
+        ->withPivot('quantity');
+    }
 }
